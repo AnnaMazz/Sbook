@@ -1,0 +1,104 @@
+1) Registrazione dell'utente
+end point /Registrazione POST
+input:     user:
+              password:
+
+output {usr:"user"}
+       SESSION {
+                status:"Ti sei registrato con successo";
+                nome_utente:"nomeUtente memoriazato in un database"
+				} 
+2) Login
+end point /Registrazione POST
+input:     user:
+              password:
+
+output {usr:"user"}
+       SESSION {
+                              status:"Ti sei loggato con successo"
+	            status:"Benvenuto "NomeUtente""
+				} 
+
+3)aggiungi un libro al carello
+end point /addCarello POST
+
+input       
+		id: "ISBN"
+		titolo :"del libro"
+            		descrizione: "trama"
+		prezzo: "prezzo"
+            	SESSION{
+	nome_utente:"nomeUtente",user:"user"
+	}
+
+output
+	{
+        { 
+	{id:"ISBN(1)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+          	{id:"ISBN(2)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+		  {Totale "prezzo1+prezzo2+..."}
+        }
+    }
+
+3)aggiungi un libro al elenco usato
+end point /addElencoPOST
+
+input       
+			id: "ISBN"
+			titolo :"del libro"
+           			descrizione: "trama"
+			prezzo: "prezzo" (metà di quello originale perchè usato)
+            SESSION{nome_utente:"nomeUtente",user:"user"}
+
+output
+	{
+        { 
+			{id:"ISBN(1)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+			{id:"ISBN(2)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+		
+        }
+    }
+5)aggiungi un libro al elenco nuovo
+end point /addElencoN POST
+
+input       
+			id: "ISBN"
+			titolo :"del libro"
+           			descrizione: "trama"
+			prezzo: "prezzo" 
+            SESSION{nome_utente:"nomeUtente",user:"user"}
+
+output
+	{
+        { 
+			{id:"ISBN(1)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+			{id:"ISBN(2)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+		
+        }
+    }
+
+
+6)Mostra libri nuovi
+end point: /mostra GET
+input      
+		SESSION{id:"ISBN(1)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+
+output
+	{
+        { 
+          {id:"ISBN(1)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+          {id:"ISBN(2)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+        }
+    }
+8)Mostra libri usati
+end point: /mostra GET
+input      
+		SESSION{id:"ISBN(1)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo", user: "user"}
+
+output
+	{
+        { 
+          {id:"ISBN(1)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+          {id:"ISBN(2)"; titolo:"del libro"; descrizione:"trama"; prezzo: "prezzo"}
+        }
+    }
