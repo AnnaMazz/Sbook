@@ -6,7 +6,7 @@
             <h1>Sign-up Utenti</h1>
                 <form action="SignIn.jsp" method="POST">
                      Nome: <input type="text" id="nome" name="nome" placeholder="nome" required> 
-                     Cognome: <input type="text" id="cognome" name="cognome" placeholder="cognome" required><br> <br> 
+                     Cognome: <input type="text" id="cognome" name="cognome" placeholder="cognome" required>
                      Username: <input type="text" id="username" name="username" placeholder="username" required> 
                      Password: <input type="password" id="password" name="password" placeholder="password" required>
 
@@ -42,17 +42,20 @@
             pass= request.getParameter("password");
             
             connection = DriverManager.getConnection("jdbc:ucanaccess://" + request.getServletContext().getRealPath("/") + "Database.accdb");
-            String verifica = "SELECT Username from Utenti WHERE Username = '"+user+"';";
-            Statement st = connection.createStatement();          
-            ResultSet result = st.executeQuery(verifica);
-            if(result.next()){
-                out.println("<p>Questo account è già esistente</p>");
-            }else{
-                String query = "INSERT INTO Utenti (Username,Password,Nome,Cognome) values ('"+user+"', '"+pass+"', '"+nome+"', '"+cognome+"');";
-                st.executeUpdate(query);
-                response.sendRedirect("index.html");
-            }
+            if(nome!=null && cognome!=null && user!=null && pass!=null)
+            {
+                String verifica = "SELECT Username from Utenti WHERE Username = '"+user+"';";
+                Statement st = connection.createStatement();          
+                ResultSet result = st.executeQuery(verifica);
             
+                if(result.next()){
+                    out.println("<p>Questo account è già esistente</p>");
+                }else{
+                    String query = "INSERT INTO Utenti (Username,Password,Nome,Cognome) values ('"+user+"', '"+pass+"', '"+nome+"', '"+cognome+"');";
+                    st.executeUpdate(query);
+                    response.sendRedirect("index.html");
+                }
+            }
         }
         catch(Exception e){
             out.println(e);
@@ -66,5 +69,8 @@
             }
         }
         %>
+        <a href="index.html">
+        <input type="button" value="Hai un accont,logati" /> <br>
+        </a>
       </body>
     </html>
