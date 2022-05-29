@@ -1,6 +1,7 @@
 
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="stile.css">
     </head>
     <body>
         <%@ page import="java.io.*" %>

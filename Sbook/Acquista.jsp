@@ -5,6 +5,9 @@
 <%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="stile.css">
+    </head>
         <body>
         <h1>LIBRI</h1> 
         <%
@@ -63,7 +66,7 @@
 
                     query = "INSERT INTO Acquisti (ISBN,Utente,DataAcquisto) values ('"+is+"', '"+nome+"', #"+data+"#);";
                     st.executeUpdate(query);
-                   out.println("Il tuo acquisto è avvenuto corretemente");
+                   out.println("Il tuo acquisto &egrave avvenuto corretemente");
                 }
                 else
                 {
@@ -92,9 +95,7 @@
         }
         %>
      
-    <a href="VisLibri.jsp">
-        <br><input type="button" value="Indietro" /> <br></a>
-     <a href="VisAcq.jsp">
-        <input type="button" value="Visualizza acquisti" /> <br></a>
+    <a href="VisLibri.jsp">Indietro<br></a>
+     <a href="VisAcq.jsp">Visualizza acquisti"<br></a>
       </body>
     </html>

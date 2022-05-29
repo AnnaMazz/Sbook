@@ -3,6 +3,7 @@
         
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="stile.css">
     </head>
     <body>
         <h1> TABELLA ACQUISTI </h1>
@@ -44,7 +45,7 @@
                     }
                 }
                 else{
-                    out.println("<a href=\"index.html\"><input type=\"submit\" value=\"Non ti sei ancora loggato\" /> <br></a>");
+                    out.println("<a href=\"index.html\">Non ti sei ancora logato:logati <br></a>");
                 }
             }
             catch (Exception er) {
@@ -52,10 +53,7 @@
             }    
     %>
     <body>
-    <a href="VisLibri.jsp">
-        <br><input type="button" value="Indietro" /> <br></a>
-    <a href="Logout.jsp">
-            <input type="button" value="Logout" /> 
-    </a><br>
+    <a href="VisLibri.jsp">Indietro<br></a>
+    <a href="Logout.jsp">Logout</a><br>
     </body>
 </html>

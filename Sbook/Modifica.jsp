@@ -2,6 +2,9 @@
 <%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="stile.css">
+    </head>
         <body>
         <h1>MODIFICA</h1> 
         <%
@@ -18,6 +21,12 @@
         {
              HttpSession s = request.getSession();
             String nome = (String) s.getAttribute("username");
+            String isbn= (String) request.getParameter("ISBN");
+
+            if(isbn!=null){
+                s.setAttribute("isbn",isbn);
+            }
+            
             if(nome!=null)
             {
 
@@ -39,16 +48,14 @@
         <input type="submit" id="btn" name="btn" value="Modifica">
     </form>
 
-    <a href="VisMIoLibri.jsp">
-        <input type="button" value="Indietro" /> <br>
-    </a>
+    <a href="VisLibriMio.jsp"> indietro <br> </a>
     </body>
 
 
         <%
         
             connection = DriverManager.getConnection("jdbc:ucanaccess://" + request.getServletContext().getRealPath("/") + "Database.accdb");
-            String isbn= (String) request.getParameter("ISBN");
+            
             String tit=null;
             String aut= null;
             String tra = null;
@@ -58,6 +65,7 @@
             String sta=null;
             ResultSet r=null;
 
+            isbn= (String) s.getAttribute("isbn");
             tit = request.getParameter("Titolo");
             aut = request.getParameter("Autore");
             tra= request.getParameter("Trama");
@@ -65,20 +73,20 @@
             pre=request.getParameter("Prezzo");
             q=request.getParameter("Quantita");
             sta=request.getParameter("Stato");
+
                 if(isbn!=null && tit!=null && aut!=null && tra!=null && csPro!=null && pre!=null && q!=null && sta!=null)
                 {
-                    String queryModifica = "UPDATE Libri SET Titolo = ISBN '"+isbn+"', Titolo = '"+tit+"' , Autore = '"+aut+"' , Trama = '"+tra+"',CasaProdutrice = '"+csPro+"', Prezzo = '"+pre+"', Quantita = '"+q+"', Stato= '"+sta+"';";
-                    String query = "SELECT * FROM Libri WHERE Proprietario = '"+nome+"';";
+                    String queryModifica = "UPDATE Libri SET Titolo = '"+tit+"' , Autore = '"+aut+"' , Trama = '"+tra+"',CasaProdutrice = '"+csPro+"', Prezzo = '"+pre+"', Quantita = '"+q+"', Stato= '"+sta+"' WHERE ISBN = '"+isbn+"';";
                     Statement st = connection.createStatement();
-                    r = st.executeQuery(query);
-  
-            st.executeUpdate(queryModifica);
-            response.sendRedirect("VisLibriMio.jsp");
+                    st.executeUpdate(queryModifica);
+                    response.sendRedirect("VisLibriMio.jsp");
+                }
+                else{
                 }
             }
             else
             {
-                out.println("<a href=\"index.html\"><input type=\"submit\" value=\"Per aggiungere libri devi essere logato\" /> <br></a>");
+                out.println("<a href=\"index.html\">Per modifcare i libri devi essere logato <br></a>");
             }
           
             

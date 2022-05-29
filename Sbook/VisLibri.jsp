@@ -3,6 +3,7 @@
         
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="stile.css">
     </head>
     <body>
         <h1> TABELLA LIBRI </h1>
@@ -47,7 +48,7 @@
                         out.println("<td style=\"border: 1px solid black;\">"+resultset.getString(7)+"</td>");
                         out.println("<td style=\"border: 1px solid black;\">"+resultset.getString(8)+"</td>");
                         out.println("<td style=\"border: 1px solid black;\">"+resultset.getString(9)+"</td>");
-                        out.println("<td style=\"border: 1px solid black;\"><a href='Acquista.jsp?ISBN="+resultset.getString(1)+"'><input type=\"submit\" value=\"Acquista ora\"></a></td></tr>"); 
+                        out.println("<td style=\"border: 1px solid black;\"><a  href='Acquista.jsp?ISBN="+resultset.getString(1)+"'>Acquista ora</a></td></tr>"); 
                                        
                         }
                         out.println("</table><br>");
@@ -64,14 +65,8 @@
             }    
     %>
     <body>
-    <a href="AggiungiLib.jsp">
-            <input type="button" value="Aggiungi" /> 
-    </a><br>
-    <a href="VisLibriMio.jsp">
-            <input type="button" value="VisualizzaMieiLibri" /> 
-    </a><br>
-    <a href="Logout.jsp">
-            <input type="button" value="Logout" /> 
-    </a><br>
+    <a href="AggiungiLib.jsp">Aggiungi</a><br>
+    <a href="VisLibriMio.jsp"> VisualizzaMieiLibri</a><br>
+    <a href="Logout.jsp" >Logout </a><br>
     </body>
 </html>

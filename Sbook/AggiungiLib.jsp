@@ -2,7 +2,10 @@
 <%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <html>
-        <body>
+    <head>
+    <link rel="stylesheet" type="text/css" href="stile.css">
+    </head>
+          <body>
         <h1>LIBRI</h1> 
         <%
             String DRIVER = "net.ucanaccess.jdbc.UcanaccessDriver";
@@ -16,7 +19,7 @@
         }
         try
         {
-             HttpSession s = request.getSession();
+            HttpSession s = request.getSession();
             String nome = (String) s.getAttribute("username");
             if(nome!=null)
             {
@@ -26,9 +29,9 @@
                 <form action="AggiungiLib.jsp" method="POST">
                      ISBN: <input type="text" id="ISBN" name="ISBN" placeholder="ISBN" required> 
                      Titolo: <input type="text" id="Titolo" name="Titolo" placeholder="Titolo" required><br>  
-                     Autore: <input type="Autore" id="Autore" name="Autore" placeholder="Autore" required> 
+                     Autore: <input type="text" id="Autore" name="Autore" placeholder="Autore" required> 
                      Trama: <input type="text" id="Trama" name="Trama" placeholder="Trama" required>
-                     Casa produtrice <input type="CasaProdutrice" id="CasaProdutrice" name="CasaProdutrice" placeholder="CasaProdutrice" required>
+                     Casa produtrice <input type="text" id="CasaProdutrice" name="CasaProdutrice" placeholder="CasaProdutrice" required>
                      Prezzo <input type="number" id="Prezzo" name="Prezzo" placeholder="Prezzo" required>
                      Quantità <input type="number" id="Quantita" name="Quantita" placeholder="Quantita" required> <br>
                      Stato <input type="radio" id="Stato" name="Stato" value="nuovo" required>
@@ -40,9 +43,7 @@
         <input type="submit" id="btn" name="btn" value="Aggiungi">
     </form>
 
-    <a href="VisLibri.jsp">
-        <input type="button" value="Indietro" /> <br>
-    </a>
+    <a href="VisLibriMio.jsp">Indietro</a>
     </body>
 
 
@@ -58,10 +59,6 @@
             String quant=null;
             String stat=null;
             
-           
-
-            
-
                 isbn = request.getParameter("ISBN");
                 tit = request.getParameter("Titolo");
                 autore = request.getParameter("Autore");
@@ -79,7 +76,7 @@
             }
             else
             {
-                out.println("<a href=\"index.html\"><input type=\"submit\" value=\"Per aggiungere libri devi essere logato\" /> <br></a>");
+                out.println("<a href=\"index.html\"> Per aggiungere libri devi essere logato <br></a>");
             }
           
             

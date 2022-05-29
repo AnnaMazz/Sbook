@@ -7,7 +7,7 @@
                         <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title> Login </title>
+    <link rel="stylesheet" type="text/css" href="stile.css">
     </head>
     <body>
      <%

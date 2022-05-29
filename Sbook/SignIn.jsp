@@ -2,6 +2,9 @@
 <%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="stile.css">
+    </head>
         <body>
             <h1>Sign-up Utenti</h1>
                 <form action="SignIn.jsp" method="POST">
@@ -13,9 +16,7 @@
         <input type="submit" id="btn" name="btn" value="Sign-up">
     </form>
 
-    <a href="index.html">
-        <input type="button" value="Indietro" /> <br>
-    </a>
+    <a href="index.html"> Indietro <br></a>
 </body>
 
 
@@ -69,8 +70,6 @@
             }
         }
         %>
-        <a href="index.html">
-        <input type="button" value="Hai un accont,logati" /> <br>
-        </a>
+        <a href="index.html"> Hai un accont,logati <br></a>
       </body>
     </html>
